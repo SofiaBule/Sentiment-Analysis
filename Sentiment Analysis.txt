@@ -1,0 +1,18 @@
+from textblob import TextBlob
+import matplotlib.pyplot as plt
+
+def analyze_sentiment(text):
+    analysis = TextBlob(text)
+    return analysis.sentiment.polarity
+
+def visualize_sentiment(data):
+    plt.hist(data, bins=[-1, -0.5, 0, 0.5, 1], edgecolor='black')
+    plt.title('Sentiment Analysis Histogram')
+    plt.xlabel('Sentiment Polarity')
+    plt.ylabel('Number of Texts')
+    plt.show()
+
+# Example Usage:
+texts = ["I love Python!", "Neutral statement.", "This is terrible!"]
+sentiments = [analyze_sentiment(text) for text in texts]
+visualize_sentiment(sentiments)
